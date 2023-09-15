@@ -28,3 +28,6 @@ npm install mongodb
 
 ### Adding a MUI FE
 
+```bash
+npm install @mui/material @emotion/react @emotion/styled @mui/x-data-grid
+```
