@@ -1,7 +1,12 @@
 import Image from 'next/image'
 import styles from './page.module.css'
 
+import { run_db } from '@/lib/mongodb';
+
 export default function Home() {
+
+  run_db().catch(console.dir);
+
   return (
     <main className={styles.main}>
       <div className={styles.description}>
