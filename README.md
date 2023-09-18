@@ -28,3 +28,9 @@ npm install mongodb
 
 ### Adding a MUI FE
 
+Does not work because `use client` forces a Client Component which can not access to MongoDB.
+
+### Trying Radix Components
+
+```bash
+npm install @radix-ui/themes

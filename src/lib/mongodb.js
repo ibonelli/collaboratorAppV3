@@ -301,7 +301,7 @@ const rrhh = [
   }
 ];
 
-export async function run_db() {
+export async function db_insert() {
   try {
     // Connect the client to the server	(optional starting in v4.7)
     await client.connect();
@@ -311,6 +311,21 @@ export async function run_db() {
     console.log(`${insertManyResult.insertedCount} documents successfully inserted.\n`);
   } catch (err) {
     console.error(`Something went wrong trying to insert the new documents: ${err}\n`);
+  } finally {
+    // Ensures that the client will close when you finish/error
+    await client.close();
+  }
+}
+
+export async function run_db() {
+  try {
+    // Connect the client to the server	(optional starting in v4.7)
+    await client.connect();
+    // Adding all the documents to the DB using:
+    const Result = await collection.findOne();
+    console.log(`Found document: ${Result.Persona}\n`);
+  } catch (err) {
+    console.error(`Something went wrong when fetching documents: ${err}\n`);
   } finally {
     // Ensures that the client will close when you finish/error
     await client.close();

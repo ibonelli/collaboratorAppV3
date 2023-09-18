@@ -1,100 +1,46 @@
-import Image from 'next/image'
-import styles from './page.module.css'
+import '@radix-ui/themes/styles.css';
 
+import { Table } from '@radix-ui/themes';
 import { run_db } from '@/lib/mongodb';
 
 export default function Home() {
 
+  //db_insert().catch(console.dir);
   run_db().catch(console.dir);
 
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>src/app/page.js</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
+    <html>
+      <body>
+        <h1>MyApp</h1>
+        <Table.Root>
+          <Table.Header>
+            <Table.Row>
+              <Table.ColumnHeaderCell>Full name</Table.ColumnHeaderCell>
+              <Table.ColumnHeaderCell>Email</Table.ColumnHeaderCell>
+              <Table.ColumnHeaderCell>Group</Table.ColumnHeaderCell>
+            </Table.Row>
+          </Table.Header>
 
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
+          <Table.Body>
+            <Table.Row>
+              <Table.RowHeaderCell>Danilo Sousa</Table.RowHeaderCell>
+              <Table.Cell>danilo@example.com</Table.Cell>
+              <Table.Cell>Developer</Table.Cell>
+            </Table.Row>
 
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
+            <Table.Row>
+              <Table.RowHeaderCell>Zahra Ambessa</Table.RowHeaderCell>
+              <Table.Cell>zahra@example.com</Table.Cell>
+              <Table.Cell>Admin</Table.Cell>
+            </Table.Row>
 
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore the Next.js 13 playground.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
+            <Table.Row>
+              <Table.RowHeaderCell>Jasper Eriksson</Table.RowHeaderCell>
+              <Table.Cell>jasper@example.com</Table.Cell>
+              <Table.Cell>Developer</Table.Cell>
+            </Table.Row>
+          </Table.Body>
+        </Table.Root>      </body>
+    </html>
   )
 }
