@@ -6,41 +6,47 @@ import { run_db } from '@/lib/mongodb';
 export default function Home() {
 
   //db_insert().catch(console.dir);
-  run_db().catch(console.dir);
+  const persona = run_db().catch(console.dir);
+
+  const headers = [
+    { id:0, name:"Full name"},
+    { id:1, name:"Email"},
+    { id:2, name:"Group" }
+  ];
+  const listOfHeaders = headers.map((colum) =>
+  <Table.ColumnHeaderCell key={colum.id}>{colum.name}</Table.ColumnHeaderCell>
+  );
+
+  const people = [
+    { id:0, name:"Danilo Sousa", email:"danilo@example.com", role:"Developer"},
+    { id:1, name:"Zahra Ambessa", email:"zahra@example.com", role:"Admin"},
+    { id:2, name:"Jasper Eriksson", email:"jasper@example.com", role:"Developer"},
+  ];
+  const rows = people.map((person) =>
+    <Table.Row key={person.id}>
+      <Table.RowHeaderCell>{person.name}</Table.RowHeaderCell>
+      <Table.Cell>{person.email}</Table.Cell>
+      <Table.Cell>{person.role}</Table.Cell>
+    </Table.Row>
+  );
 
   return (
     <html>
       <body>
         <h1>MyApp</h1>
+        <p>{persona}</p>
+        <br/><br/>
+        <h2>Table</h2>
         <Table.Root>
           <Table.Header>
-            <Table.Row>
-              <Table.ColumnHeaderCell>Full name</Table.ColumnHeaderCell>
-              <Table.ColumnHeaderCell>Email</Table.ColumnHeaderCell>
-              <Table.ColumnHeaderCell>Group</Table.ColumnHeaderCell>
-            </Table.Row>
+            <Table.Row>{listOfHeaders}</Table.Row>
           </Table.Header>
 
           <Table.Body>
-            <Table.Row>
-              <Table.RowHeaderCell>Danilo Sousa</Table.RowHeaderCell>
-              <Table.Cell>danilo@example.com</Table.Cell>
-              <Table.Cell>Developer</Table.Cell>
-            </Table.Row>
-
-            <Table.Row>
-              <Table.RowHeaderCell>Zahra Ambessa</Table.RowHeaderCell>
-              <Table.Cell>zahra@example.com</Table.Cell>
-              <Table.Cell>Admin</Table.Cell>
-            </Table.Row>
-
-            <Table.Row>
-              <Table.RowHeaderCell>Jasper Eriksson</Table.RowHeaderCell>
-              <Table.Cell>jasper@example.com</Table.Cell>
-              <Table.Cell>Developer</Table.Cell>
-            </Table.Row>
+            {rows}
           </Table.Body>
-        </Table.Root>      </body>
+        </Table.Root>
+      </body>
     </html>
   )
 }

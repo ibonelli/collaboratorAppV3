@@ -324,6 +324,7 @@ export async function run_db() {
     // Adding all the documents to the DB using:
     const Result = await collection.findOne();
     console.log(`Found document: ${Result.Persona}\n`);
+    return Result.Persona;
   } catch (err) {
     console.error(`Something went wrong when fetching documents: ${err}\n`);
   } finally {

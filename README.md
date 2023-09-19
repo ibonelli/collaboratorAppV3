@@ -34,3 +34,4 @@ Does not work because `use client` forces a Client Component which can not acces
 
 ```bash
 npm install @radix-ui/themes
+```
