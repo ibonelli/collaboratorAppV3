@@ -321,10 +321,9 @@ export async function run_db() {
   try {
     // Connect the client to the server	(optional starting in v4.7)
     await client.connect();
-    // Adding all the documents to the DB using:
-    const Result = await collection.findOne();
-    console.log(`Found document: ${Result.Persona}\n`);
-    return Result.Persona;
+    const data = await collection.find({}).project({ _id: 0 }).limit(4).toArray();
+    //console.log('Found documents: ', data);
+    return data;
   } catch (err) {
     console.error(`Something went wrong when fetching documents: ${err}\n`);
   } finally {
