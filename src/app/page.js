@@ -15,9 +15,6 @@ async function getData() {
 }
 
 export default async function Home() {
-
-  //db_insert().catch(console.dir);
-
   // Print returned documents
   const myPeopleDB = await getData()
 
@@ -41,27 +38,22 @@ export default async function Home() {
     { id:2, name:"Jasper Eriksson", email:"jasper@example.com", role:"Developer"},
   ];
 
-  const rows = people.map((person) =>
-    <Table.Row key={person.id}>
-      <Table.RowHeaderCell>{person.id}</Table.RowHeaderCell>
-      <Table.Cell>{person.name}</Table.Cell>
-      <Table.Cell>{person.email}</Table.Cell>
-      <Table.Cell>{person.role}</Table.Cell>
+  const rows = myPeopleDB.map((person) =>
+    <Table.Row key={person.ID}>
+      <Table.RowHeaderCell>{person.ID}</Table.RowHeaderCell>
+      <Table.Cell>{person.Persona}</Table.Cell>
+      <Table.Cell>{person.Pais}</Table.Cell>
+      <Table.Cell>{person.Ciudad}</Table.Cell>
+      <Table.Cell>{person.Join}</Table.Cell>
+      <Table.Cell>{person.Lead}</Table.Cell>
+      <Table.Cell>{person.Cliente}</Table.Cell>
     </Table.Row>
-  );
-
-  const listItems = myPeopleDB.map((number) =>
-  <li>{number.Persona}</li>
   );
 
   return (
     <html>
       <body>
         <h1>MyApp</h1>
-        <br/><br/>
-        <ul>
-          {listItems}
-        </ul>
         <br/><br/>
         <h2>Table</h2>
         <Table.Root>
