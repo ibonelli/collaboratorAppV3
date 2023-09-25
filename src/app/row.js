@@ -8,7 +8,6 @@ const handleClick = (personId) => {
 }
 
 export default function Row({ person }) {
-  //const person = JSON.parse(data);
   return (
     <Table.Row onClick={() => handleClick(person.ID)} key={person.ID}>
       <Table.RowHeaderCell>{person.ID}</Table.RowHeaderCell>
