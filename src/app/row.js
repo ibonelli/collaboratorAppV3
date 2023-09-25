@@ -7,8 +7,8 @@ const handleClick = (personId) => {
   console.log(`${personId} clicked it.`);
 }
 
-export default function Row({ data }) {
-  const person = JSON.parse(data);
+export default function Row({ person }) {
+  //const person = JSON.parse(data);
   return (
     <Table.Row onClick={() => handleClick(person.ID)} key={person.ID}>
       <Table.RowHeaderCell>{person.ID}</Table.RowHeaderCell>

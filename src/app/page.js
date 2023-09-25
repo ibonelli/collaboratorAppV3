@@ -2,7 +2,7 @@ import '@radix-ui/themes/styles.css';
 import { Table } from '@radix-ui/themes';
 
 import { run_db } from '@/lib/mongodb';
-import { Row } from './row';
+import Row from './row';
 
 async function getData() {
   const peopleDB = await run_db();
@@ -34,7 +34,7 @@ export default async function Home() {
   );
 
   const rows = myPeopleDB.map((person) =>
-    <Row person={JSON.stringify(person)} />
+    <Row person={person} key={person.ID}/>
   );
 
   return (
