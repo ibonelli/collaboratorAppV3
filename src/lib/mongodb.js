@@ -22,7 +22,7 @@ export async function run_db() {
   try {
     // Connect the client to the server	(optional starting in v4.7)
     await client.connect();
-    const data = await collection.find().project({ _id: 0 }).limit(4).toArray();
+    const data = await collection.find().project({ _id: 0 }).limit(8).toArray();
     //console.log('Found documents: ', data);
     return data;
   } catch (err) {
